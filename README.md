@@ -72,13 +72,24 @@ Apache HTTP Server (httpd)
 - How a CDN sits between a browser and an origin web server.
 - Why HTTPS to CloudFront does not automatically mean HTTPS to the origin.
 
+## Screenshots
+
+### CLOUDLAB dashboard overview
+
+![CLOUDLAB Linux Server Dashboard overview](Screenshot%202026-10-30%20005025.png)
+
+### Infrastructure and deployment details
+
+![CLOUDLAB infrastructure and deployment details](Screenshot%202026-10-30%20005040.png)
+
 ## Repository contents
 
 - `README.md` — project overview and architecture
 - `docs/deployment.md` — repeatable deployment steps
 - `docs/linux-commands.md` — commands practiced and explained
 - `docs/security-and-costs.md` — security considerations and cost cleanup
-- Website source files (`index.html`, `style.css`, `script.js`) and screenshots will be added from the original local project folder.
+- `index.html`, `style.css`, `script.js` — dashboard source code
+- `Screenshot 2026-10-30 005025.png` and `Screenshot 2026-10-30 005040.png` — deployed dashboard screenshots
 
 ## Security note
 
