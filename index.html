@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Project 02 | Linux Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="brand">☁ CLOUD<span>LAB</span></div>
+            <div class="sidebar-label">AWS PORTFOLIO</div>
+            <nav>
+                <a href="#overview" class="active">◈ Overview</a>
+                <a href="#infrastructure">▣ Infrastructure</a>
+                <a href="#deployment">⌘ Deployment</a>
+            </nav>
+            <div class="sidebar-footer">PROJECT 02 / EC2</div>
+        </aside>
+
+        <main class="content">
+            <header>
+                <div>
+                    <p class="eyebrow">AMAZON WEB SERVICES / PROJECT 02</p>
+                    <h1>Linux Server Dashboard</h1>
+                    <p class="subtitle">Cloud infrastructure overview</p>
+                </div>
+                <div class="status"><span class="dot"></span> Dashboard loaded</div>
+            </header>
+
+            <section id="overview">
+                <h2>Server Overview</h2>
+                <div class="cards">
+                    <article class="card">
+                        <div class="card-icon">☁</div>
+                        <p>Cloud Provider</p>
+                        <h3>Amazon AWS</h3>
+                        <span>Amazon EC2</span>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">▤</div>
+                        <p>Operating System</p>
+                        <h3>Amazon Linux</h3>
+                        <span>Version 2023</span>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">◉</div>
+                        <p>Web Server</p>
+                        <h3>Apache HTTPD</h3>
+                        <span>Installed and configured</span>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon">⌘</div>
+                        <p>Remote Access</p>
+                        <h3>SSH</h3>
+                        <span>Key pair authentication</span>
+                    </article>
+                </div>
+            </section>
+
+            <section id="infrastructure" class="panel">
+                <h2>Infrastructure Architecture</h2>
+                <div class="architecture">
+                    <div class="node">🌐<strong>Browser</strong><small>HTTP request</small></div>
+                    <div class="connector">→</div>
+                    <div class="node">🛡️<strong>Security Group</strong><small>Port 80</small></div>
+                    <div class="connector">→</div>
+                    <div class="node">🖥️<strong>Amazon EC2</strong><small>Linux + Apache</small></div>
+                </div>
+            </section>
+
+            <section id="deployment" class="panel">
+                <h2>Deployment Details</h2>
+                <div class="details">
+                    <div><span>Project</span><strong>AWS Project 02</strong></div>
+                    <div><span>Instance Type</span><strong>t3.micro</strong></div>
+                    <div><span>AWS Region</span><strong>eu-north-1</strong></div>
+                    <div><span>Web Root</span><strong>/var/www/html</strong></div>
+                    <div><span>Website Protocol</span><strong>HTTP</strong></div>
+                    <div><span>Last Page Load</span><strong id="last-updated">—</strong></div>
+                </div>
+            </section>
+
+            <footer>
+                AWS Cloud Engineering Portfolio · Project 02
+                <p>Static demonstration dashboard — not live server telemetry.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
