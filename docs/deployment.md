@@ -1,6 +1,6 @@
 # Deployment guide — AWS EC2 + Apache + CloudFront
 
-This guide documents the steps used in Project 02. Replace placeholders with values from **your own** AWS account. Do not publish private keys.
+This guide records the Project 02 deployment procedure and CloudFront configuration. Instructions to verify a result are not evidence that the check passed. The project notes report an EC2 HTTP browser check and the README previously reported viewer-facing HTTPS; the committed dashboard captures do not show a URL or TLS details. Current AWS resource state and endpoint availability were not checked in this documentation review. Replace placeholders with values from **your own** AWS account. Do not publish private keys.
 
 ## 1. Launch EC2
 - AWS Region: Stockholm (`eu-north-1`)
@@ -63,9 +63,26 @@ Verify the updated website in the browser.
 - Default root object: `index.html`.
 - Wait until distribution deployment completes and visit its `https://` domain.
 
-This project's distribution was named `CLOUDLAB-Project-02`.
+The recorded distribution name is `CLOUDLAB-Project-02`. This does not establish its current deployment or enabled state.
+
+HTTPS protects the browser-to-CloudFront connection only. CloudFront-to-EC2 traffic uses HTTP on port 80; this is not end-to-end TLS. The redirect policy is documented configuration, with no committed redirect response evidence.
 
 ## 8. Validate and troubleshoot
+
+The checks below are a repeatable validation plan, not completed test results. On a future run, retain dated, redacted output and the endpoint tested:
+
+| Check | Evidence to retain | What it establishes |
+| --- | --- | --- |
+| Direct EC2 HTTP | Browser URL and page capture, or `curl -I http://<EC2_PUBLIC_DNS>/` plus a page check | HTTP origin response at that time |
+| CloudFront HTTPS | Browser capture with the CloudFront HTTPS URL and certificate details, plus dashboard rendering | Viewer-facing TLS and page delivery at that time |
+| Viewer redirect | `curl -I http://<CLOUDFRONT_DOMAIN>/` showing redirect status and HTTPS `Location` | HTTP-to-HTTPS redirect for that request |
+| Origin configuration | Redacted CloudFront settings showing origin hostname, HTTP-only policy and port 80 | Configured origin transport; a viewer HTTPS response alone cannot prove this |
+| Distribution state | Dated console capture showing deployment complete and enabled state | Resource state at capture time, not ongoing availability |
+
+A cached CloudFront response can load even when the origin is unavailable. To claim current origin retrieval, separately check the origin and retain evidence of a fresh origin fetch (for example, a unique test object with a matching Apache access-log entry). Do not describe a cached page load as a complete origin-health test.
+
+The existing UI screenshots lack browser chrome. Their HTTP labels and “Dashboard loaded” badge are hard-coded HTML, while the page-load time comes from client JavaScript. They do not verify TLS, AWS configuration, server health, or deployment time.
+
 ```bash
 whoami
 pwd
