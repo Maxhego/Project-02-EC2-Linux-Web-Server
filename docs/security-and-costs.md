@@ -1,10 +1,10 @@
 # Security, limitations, and cost management
 
-## Security configuration used
+## Documented security configuration
 - SSH (TCP 22) restricted to the administrator's public IP address (/32).
 - HTTP (TCP 80) accessible so CloudFront can reach the EC2 origin.
 - SSH key authentication used for administration.
-- Viewer HTTP requests redirected to HTTPS by CloudFront.
+- CloudFront viewer policy recorded as **Redirect HTTP to HTTPS**. No committed redirect-response output or browser TLS evidence independently verifies the reported check.
 
 ## Important limitations
 - **Not end-to-end encrypted:** browser → CloudFront uses HTTPS; CloudFront → EC2 uses HTTP.
@@ -17,7 +17,10 @@
 - Use a stable origin hostname and appropriate origin access restrictions.
 - Apply least-privilege security group rules and regular system updates.
 - Add CloudWatch metrics and real dashboard data in a future iteration.
-- Add screenshots and verify no secrets are included in images.
+- Supplement the existing UI captures with dated endpoint/TLS evidence and redacted CloudFront configuration. Inspect all new captures for secrets before committing.
+
+## Evidence and deployment status
+The committed screenshots show static dashboard content without a browser URL or TLS details. They cannot verify security group rules, origin protocol settings, viewer redirects, or current resource health. The README records the distinction between reported checks and retained evidence. This documentation review did not access AWS or retest the deployment; current availability is unknown.
 
 ## AWS charges and cleanup
 Depending on account eligibility and actual usage, charges may arise from:
